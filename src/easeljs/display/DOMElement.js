@@ -127,6 +127,11 @@ var p = DOMElement.prototype = new DisplayObject();
 		o.style.visibility = this.visible ? "visible" : "hidden";
 		o.style.transform = o.style.webkitTransform = o.style.oTransform = ["matrix("+mtx.a,mtx.b,mtx.c,mtx.d,mtx.tx,mtx.ty+")"].join(",");
 		o.style.MozTransform = ["matrix("+mtx.a,mtx.b,mtx.c,mtx.d,mtx.tx+"px",mtx.ty+"px)"].join(",");
+		if ( o.filters ) {
+			EaselJS.getElementFilter(o, "DXImageTransform.Microsoft.Alpha").Opacity = 100;//Math.round(mtx.alpha*100);
+			o.style.marginLeft = mtx.tx+"px";
+			o.style.marginTop = mtx.ty+"px";
+		}
 		return true;
 	}
 

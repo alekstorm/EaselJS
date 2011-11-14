@@ -21,6 +21,7 @@ fi
 ARGS=("$@")
 java -jar $1 $2 \
     --js_output_file $OUTPUT \
+    --js ../src/easeljs/EaselJS.js \
     --js ../src/easeljs/utils/UID.js \
     --js ../src/easeljs/utils/Ticker.js \
     --js ../src/easeljs/events/MouseEvent.js \
@@ -29,8 +30,8 @@ java -jar $1 $2 \
     --js ../src/easeljs/geom/Rectangle.js \
     --js ../src/easeljs/display/Shadow.js \
     --js ../src/easeljs/display/SpriteSheet.js \
-    --js ../src/easeljs/display/Graphics.js \
     --js ../src/easeljs/display/DisplayObject.js \
+    --js ../src/easeljs/display/Graphics.js \
     --js ../src/easeljs/display/Container.js \
     --js ../src/easeljs/display/Stage.js \
     --js ../src/easeljs/display/DOMElement.js \
