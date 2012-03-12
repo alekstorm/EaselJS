@@ -262,7 +262,8 @@ function buildSourceTask(completeHandler)
 	].concat(
 			file_args
 		).concat(
-			["--js_output_file", tmp_file]
+			["--js_output_file", tmp_file],
+			['--compilation_level', 'WHITESPACE_ONLY']
 		);
 		
 	if(verbose)

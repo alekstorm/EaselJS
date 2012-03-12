@@ -409,13 +409,14 @@ var p = Stage.prototype = new Container();
 	 * @param {MouseEvent} e
 	 **/
 	p._handleMouseUp = function(e) {
-		var evt = new MouseEvent("onMouseUp", this.mouseX, this.mouseY, this, e);
-		if (this.onMouseUp) { this.onMouseUp(evt); }
-		if (this._activeMouseEvent && this._activeMouseEvent.onMouseUp) { this._activeMouseEvent.onMouseUp(evt); }
-		if (this._activeMouseTarget && this._activeMouseTarget.onClick &&
-				this._getObjectsUnderPoint(this.mouseX, this.mouseY, null, true, (this._mouseOverIntervalID ? 3 : 1)) == this._activeMouseTarget) {
-
-			this._activeMouseTarget.onClick(new MouseEvent("onClick", this.mouseX, this.mouseY, this._activeMouseTarget, e));
+		if (this._getObjectsUnderPoint(this.mouseX, this.mouseY, null, true, (this._mouseOverIntervalID ? 3 : 1)) == this._activeMouseTarget) {
+			var evt = new MouseEvent("onMouseUp", this.mouseX, this.mouseY, this, e);
+			if (this.onMouseUp)
+				this.onMouseUp(evt);
+			if (this._activeMouseEvent && this._activeMouseEvent.onMouseUp)
+				this._activeMouseEvent.onMouseUp(evt);
+			if (this._activeMouseTarget && this._activeMouseTarget.onClick)
+				this._activeMouseTarget.onClick(new MouseEvent("onClick", this.mouseX, this.mouseY, this._activeMouseTarget, e));
 		}
 		this._activeMouseEvent = this._activeMouseTarget = null;
 	}
